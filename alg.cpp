@@ -14,12 +14,153 @@ using Group = std::unordered_set<std::string>;
 
 enum class IPVersion { IPV4, IPV6 };
 
+struct Node {
+    std::unique_ptr<Node> left;
+    std::unique_ptr<Node> right;
+    bool is_end_of_prefix;
+
+    // Constructor
+    Node() : left(nullptr), right(nullptr), is_end_of_prefix(false) {}
+};
+
+class OptimizationTrie {
+    private:
+        std::unique_ptr<Node> root;
+    
+    public:
+        // Constructor
+        OptimizationTrie() : root(std::make_unique<Node>()) {}
+    
+        // Insert a binary string into the trie whilst performing compression optimizations
+        void insert(const std::string& prefix) {
+            std::stack<Node*> visited;
+            Node* current = root.get();
+    
+            // Optimization 1: First check if the root node has a prefix
+            if (current->is_end_of_prefix) {
+                return;
+            }
+    
+            for (char bit : prefix) {
+                visited.push(current);
+    
+                if (bit == '0') {
+                    if (!current->left) {
+                        current->left = std::make_unique<Node>();
+                    }
+                    current = current->left.get();
+                }
+    
+                else if (bit == '1') {
+                    if (!current->right) {
+                        current->right = std::make_unique<Node>();
+                    }
+                    current = current->right.get();
+                }
+    
+                else {
+                    std::cerr << "Encountered an invalid bit" << std::endl;
+                    return;
+                }
+    
+                // Optimization 1: If we encounter a node that has a prefix, end insertion
+                if (current->is_end_of_prefix) {
+                    return;
+                }
+            }
+    
+            // Optimization 1: If we stop at a node that has children, delete the node's children
+            if (current->left || current->right) {
+                current->left.reset();
+                current->right.reset();
+            }
+    
+            current->is_end_of_prefix = true;
+    
+            // Optimization 2: In reverse order, perform prefix aggregation if possible
+            while (!visited.empty()) {
+                Node* parent = visited.top();
+                visited.pop();
+    
+                if (parent->left && parent->right) {
+                    if (parent->left->is_end_of_prefix && parent->right->is_end_of_prefix) {
+                        parent->is_end_of_prefix = true;
+                        parent->left.reset();
+                        parent->right.reset();
+                    }
+                }
+    
+                else {
+                    break;
+                }
+            }
+        }
+    
+        // Traverse the trie and return a rule containing all its prefixes
+        Rule traverse() const {
+            Rule result;
+            dfs_traversal(root.get(), result, "");
+            return result;
+        }
+    
+    private:
+        // Helper function to perform DFS traversal
+        void dfs_traversal(Node* node, Rule& result, std::string prefix) const {
+            if (!node) return;
+    
+            if (node->is_end_of_prefix) {
+                result.push_back(prefix);
+            }
+    
+            dfs_traversal(node->left.get(), result, prefix + '0');
+            dfs_traversal(node->right.get(), result, prefix + '1');
+        }
+};
+
+class UnibitTrie {
+    private:
+        std::unique_ptr<Node> root;
+
+    public:
+        // Constructor
+        UnibitTrie() : root(std::make_unique<Node>()) {}
+
+        // Insert a binary string into the unibit trie
+        void insert(const std::string& prefix) {
+            Node* current = root.get();
+    
+            for (char bit : prefix) {
+                if (bit == '0') {
+                    if (!current->left) {
+                        current->left = std::make_unique<Node>();
+                    }
+                    current = current->left.get();
+                }
+    
+                else if (bit == '1') {
+                    if (!current->right) {
+                        current->right = std::make_unique<Node>();
+                    }
+                    current = current->right.get();
+                }
+    
+                else {
+                    std::cerr << "Encountered an invalid bit" << std::endl;
+                    return;
+                }
+            }
+    
+            current->is_end_of_prefix = true;
+        }
+};
+
 // Function prototypes
 IPVersion parse_ip_version(const std::string& version);
 std::ifstream open_file(const std::string& file_name);
 std::vector<Rule> parse_file(std::ifstream& file, IPVersion ip_version);
 Rule parse_line(const std::string& line, IPVersion ip_version);
 std::string ipv4_cidr_to_binary(const std::string& cidr);
+std::vector<std::unique_ptr<OptimizationTrie>> build_optimization_tries(const std::vector<std::vector<std::string>>& rules);
 void print_rules(const std::vector<Rule>& rules, const std::string& msg);
 
 int main(int argc, char* argv[]) {
@@ -42,10 +183,41 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    std::vector<Rule> rules = parse_file(file, version);
-    print_rules(rules, "Original Rules");
+    // Read the raw rules
+    std::vector<Rule> original_rules = parse_file(file, version);
 
-    
+    // For each raw rule, build an optimization trie to perform prefix aggregation and compression
+    // Traverse each optimization trie and compile all the compressed rules back together
+    std::vector<Rule> compressed_rules;
+    auto optimization_tries = build_optimization_tries(original_rules);
+    for (std::size_t i = 0; i < optimization_tries.size(); i++) {
+        Rule prefixes = optimization_tries[i]->traverse();
+        compressed_rules.push_back(prefixes);
+    }
+
+    print_rules(original_rules, "Original Rules");
+    std::cout << std::endl;
+    print_rules(compressed_rules, "Compressed Rules");
+    std::cout << std::endl;
+
+    original_rules.clear();
+    original_rules.shrink_to_fit();
+
+    // Initialize a unibit trie containing all the prefixes for a given field
+    std::unique_ptr<UnibitTrie> unibit_trie = std::make_unique<UnibitTrie>();
+    for (const auto& rule : compressed_rules) {
+        for (const auto& str : rule) {
+            unibit_trie->insert(str);
+        }
+    }
+
+    // Now using the compressed rules and the unibit trie, create non-overlapping groups
+    std::vector<Group> nonoverlap_groups;
+    for (const auto& rule : compressed_rules) {
+        for (const auto& str : rule) {
+            
+        }
+    }
 
     return EXIT_SUCCESS;
 }
@@ -150,6 +322,21 @@ std::string ipv4_cidr_to_binary(const std::string& cidr) {
     // }
 
     // return bitstring.to_string().substr(0, length);
+}
+
+// Function to build tries for each rule read
+std::vector<std::unique_ptr<OptimizationTrie>> build_optimization_tries(const std::vector<Rule>& rules) {
+    std::vector<std::unique_ptr<OptimizationTrie>> tries;
+
+    for (const auto& rule : rules) {
+        std::unique_ptr<OptimizationTrie> trie = std::make_unique<OptimizationTrie>();
+        for (const auto& prefix : rule) {
+            trie->insert(prefix);
+        }
+        tries.push_back(std::move(trie)); // Store the trie in the list
+    }
+
+    return tries;
 }
 
 // Function to print out all the rules
