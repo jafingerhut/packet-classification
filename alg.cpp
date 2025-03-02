@@ -152,6 +152,51 @@ class UnibitTrie {
     
             current->is_end_of_prefix = true;
         }
+
+        bool find_overlap(const std::string& prefix) const {
+            Node* current = root.get();
+            size_t len = prefix.size();
+            size_t index = 0;
+
+            if (current->is_end_of_prefix) {
+                return true;
+            }
+            
+            for (char bit : prefix) {
+                if (bit == '0') {
+                    if (!current->left) {
+                        std::cerr << "Unexpected behavior: did not find pre-existing path in unibit trie" << std::endl;
+                    }
+                    current = current->left.get();
+                }
+    
+                else if (bit == '1') {
+                    if (!current->right) {
+                        std::cerr << "Unexpected behavior: did not find pre-existing path in unibit trie" << std::endl;
+                    }
+                    current = current->right.get();
+                }
+    
+                else {
+                    std::cerr << "Encountered an invalid bit" << std::endl;
+                }
+    
+                // If we reach an end of prefix before the last character, it means there exists overlap
+                if (current->is_end_of_prefix && index < len-1) {
+                    return true;
+                }
+
+                index += 1;
+            }
+
+            // If we stop at a node that has children, then there exists overlap
+            if (current->left || current->right) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
 };
 
 // Function prototypes
@@ -162,6 +207,7 @@ Rule parse_line(const std::string& line, IPVersion ip_version);
 std::string ipv4_cidr_to_binary(const std::string& cidr);
 std::vector<std::unique_ptr<OptimizationTrie>> build_optimization_tries(const std::vector<std::vector<std::string>>& rules);
 void print_rules(const std::vector<Rule>& rules, const std::string& msg);
+void print_groups(const std::vector<Group>& groups, const std::string& msg, const std::string& label);
 
 int main(int argc, char* argv[]) {
     IPVersion version;
@@ -211,13 +257,61 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    // Now using the compressed rules and the unibit trie, create non-overlapping groups
-    std::vector<Group> nonoverlap_groups;
+    // Now using the compressed rules and the unibit trie, create two sets of groups
+    // 1. Brand new groups created to hold overlapping entries (new_groups)
+    // 2. Groups containing leftover entries from the compressed rules (original_groups)
+    std::vector<Group> new_groups;
+    std::vector<Group> original_groups;
     for (const auto& rule : compressed_rules) {
+        Group original_group;
         for (const auto& str : rule) {
-            
+            bool exists_overlap = unibit_trie->find_overlap(str);
+            if (exists_overlap) {
+                // if there exists overlap, first check if the prefix does not already exist in any of the new hash sets
+                bool prefix_found = false;
+                for (const auto& group : new_groups) {
+                    if (group.find(str) != group.end()) {
+                        prefix_found = true;
+                        break;
+                    }
+                }
+                if (!prefix_found) {
+                    Group new_group = {str};
+                    new_groups.push_back(new_group);
+                }
+            }
+            else {
+                original_group.insert(str);
+            }
+        }
+        if (original_group.size() != 0){
+            original_groups.push_back(original_group);
         }
     }
+
+    print_groups(original_groups, "Original Groups", "SG");
+    std::cout << std::endl;
+    print_groups(new_groups, "New Groups", "SG");
+    std::cout << std::endl;
+
+    // Now we need to form the atomic units for the original_groups (not for new_groups because they are size 1)
+    // Store new atomic groups in atomic_groups, use hash map to map prefix ==> index of its atomic group in the vector
+    std::vector<Group> atomic_groups;
+    // for (const auto& original_group : original_groups) {
+    //     for (const auto& str : original_group) {
+    //         bool prefix_found = false;
+    //         if (!prefix_found) {
+    //             Group new_group = {str};
+    //             new_groups.push_back(new_group);
+    //         }
+    //         for (const auto& atomic_group : atomic_groups) {
+    //             if (atomic_group.find(str) != atomic_group.end()) {
+    //                 prefix_found = true;
+    //                 break;
+    //             }
+    //         }
+    //     }
+    // }
 
     return EXIT_SUCCESS;
 }
@@ -345,6 +439,23 @@ void print_rules(const std::vector<Rule>& rules, const std::string& msg) {
     for (std::size_t i = 0; i < rules.size(); i++) {
         std::cout << "R" << i << ": ";
         for (const std::string& element : rules[i]) {
+            if (element == "") {
+                std::cout << '*' << " ";
+            }
+            else {
+                std::cout << element << " ";
+            }
+        }
+        std::cout << std::endl;
+    }
+}
+
+// Function to print out all the groups
+void print_groups(const std::vector<Group>& groups, const std::string& msg, const std::string& label) {
+    std::cout << msg << std::endl;
+    for (std::size_t i = 0; i < groups.size(); i++) {
+        std::cout << label << i << ": ";
+        for (const std::string& element : groups[i]) {
             if (element == "") {
                 std::cout << '*' << " ";
             }
