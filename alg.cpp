@@ -4,6 +4,7 @@
 #include <bitset>
 #include <stack>
 #include <unordered_set>
+#include <unordered_map>
 #include <vector>
 #include <string>
 #include <stdexcept>
@@ -289,29 +290,62 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    print_groups(original_groups, "Original Groups", "SG");
+    print_groups(original_groups, "Original Groups", "G");
     std::cout << std::endl;
-    print_groups(new_groups, "New Groups", "SG");
+    print_groups(new_groups, "New Groups", "G");
     std::cout << std::endl;
 
     // Now we need to form the atomic units for the original_groups (not for new_groups because they are size 1)
-    // Store new atomic groups in atomic_groups, use hash map to map prefix ==> index of its atomic group in the vector
+    // Store new atomic groups in atomic_groups, use atomic_map to map prefix ==> index of its atomic group in the vector (performance optimization)
     std::vector<Group> atomic_groups;
-    // for (const auto& original_group : original_groups) {
-    //     for (const auto& str : original_group) {
-    //         bool prefix_found = false;
-    //         if (!prefix_found) {
-    //             Group new_group = {str};
-    //             new_groups.push_back(new_group);
-    //         }
-    //         for (const auto& atomic_group : atomic_groups) {
-    //             if (atomic_group.find(str) != atomic_group.end()) {
-    //                 prefix_found = true;
-    //                 break;
-    //             }
-    //         }
-    //     }
-    // }
+    std::unordered_map<std::string, int> atomic_map;
+
+    int atomic_index = 0;
+    for (const auto& original_group : original_groups) {
+        Group atomic_group;
+        std::unordered_set<int> matched_indices;
+        // for a given original_group, assemble list of matching indices (union of atomic groups to check)
+        for (const auto& str : original_group) {
+            if (atomic_map.find(str) != atomic_map.end()) {
+                matched_indices.insert(atomic_map[str]); // if found in pre-existing atomic group, append index (hash set for unique)
+            }
+            else {
+                atomic_map[str] = atomic_index; // if not found in pre-existing atomic group, add to new atomic group
+                atomic_group.insert(str);
+            }
+        }
+
+        // if new atomic group created, add to list of atomic groups
+        if (atomic_group.size() > 0) {
+            atomic_groups.push_back(atomic_group);
+            atomic_index++;
+        }
+
+        for (int curr : matched_indices) { // for each matched atomic group, see if it is necessary to splinter/branch off new sub-group
+            Group atomic_splinter;
+            std::vector<std::string> to_remove;
+            for (const auto& str : atomic_groups[curr]) {
+                // for each prefix in the union of matched atomic groups, if it doesn't exist in the original group, splinter the atomic group
+                if (original_group.find(str) == original_group.end()) {
+                    // if entry in atomic group is not found in original group, it means we need to split atomic group into subsets
+                    atomic_map[str] = atomic_index;
+                    atomic_splinter.insert(str);
+                    to_remove.push_back(str);
+                }
+            }
+
+            if (atomic_splinter.size() > 0) {
+                atomic_groups.push_back(atomic_splinter);
+                atomic_index++;
+                for (const auto& str : to_remove) {
+                    atomic_groups[curr].erase(str); // if adding prefix to new atomic group, remove trace of it from old atomic group
+                }
+            }
+        }
+    }
+
+    print_groups(atomic_groups, "Atomic Groups", "G");
+    std::cout << std::endl;
 
     return EXIT_SUCCESS;
 }
