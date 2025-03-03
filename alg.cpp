@@ -346,23 +346,18 @@ std::string ipv4_cidr_to_binary(const std::string& cidr) {
     }
 
     std::string prefix = cidr.substr(0, slash_delim);
+    int length = std::stoi(cidr.substr(slash_delim + 1));
+    std::stringstream ss(prefix);
+    std::string byte;
+    std::bitset<32> bitstring;
+    int shift = 24;
 
-    return prefix;
+    while (std::getline(ss, byte, '.')) {
+        bitstring |= (std::bitset<32>(std::stoi(byte)) << shift);
+        shift -= 8;
+    }
 
-    // int length = std::stoi(cidr.substr(slash_delim + 1));
-
-    // std::stringstream ss(prefix);
-    // std::string byte;
-
-    // std::bitset<32> bitstring;
-    // int shift = 24;
-
-    // while (std::getline(ss, byte, '.')) {
-    //     bitstring |= (std::bitset<32>(std::stoi(byte)) << shift);
-    //     shift -= 8;
-    // }
-
-    // return bitstring.to_string().substr(0, length);
+    return bitstring.to_string().substr(0, length);
 }
 
 // Function to build tries for each rule read
@@ -518,6 +513,12 @@ std::vector<Group> create_atomic_groups(const std::vector<Group>& non_overlap_gr
                 for (const auto& str : to_remove) {
                     atomic_groups[curr].erase(str); // if adding prefix to new atomic group, remove trace of it from old atomic group
                 }
+            }
+
+            // sanity check
+            if (atomic_groups[curr].size() == 0) {
+                std::cerr << "Error: all the entries were removed from an atomic group" << std::endl;
+                return {};
             }
         }
     }
