@@ -209,6 +209,9 @@ std::string ipv4_cidr_to_binary(const std::string& cidr);
 std::vector<std::unique_ptr<OptimizationTrie>> build_optimization_tries(const std::vector<std::vector<std::string>>& rules);
 void print_rules(const std::vector<Rule>& rules, const std::string& msg);
 void print_groups(const std::vector<Group>& groups, const std::string& msg, const std::string& label);
+std::vector<Rule> optimize_rules(const std::vector<Rule>& original_rules);
+std::pair<std::vector<Group>, std::vector<Group>> create_overlap_groups(const std::vector<Rule>& compressed_rules);
+std::vector<Group> create_atomic_groups(const std::vector<Group>& non_overlap_groups);
 
 int main(int argc, char* argv[]) {
     IPVersion version;
@@ -233,116 +236,26 @@ int main(int argc, char* argv[]) {
     // Read the raw rules
     std::vector<Rule> original_rules = parse_file(file, version);
 
-    // For each raw rule, build an optimization trie to perform prefix aggregation and compression
-    // Traverse each optimization trie and compile all the compressed rules back together
-    std::vector<Rule> compressed_rules;
-    auto optimization_tries = build_optimization_tries(original_rules);
-    for (std::size_t i = 0; i < optimization_tries.size(); i++) {
-        Rule prefixes = optimization_tries[i]->traverse();
-        compressed_rules.push_back(prefixes);
-    }
+    // Optimize the rules by performing aggregation and compression
+    std::vector<Rule> compressed_rules = optimize_rules(original_rules);
 
     print_rules(original_rules, "Original Rules");
     std::cout << std::endl;
-    print_rules(compressed_rules, "Compressed Rules");
+    print_rules(compressed_rules, "Optimized Rules");
     std::cout << std::endl;
-
     original_rules.clear();
     original_rules.shrink_to_fit();
 
-    // Initialize a unibit trie containing all the prefixes for a given field
-    std::unique_ptr<UnibitTrie> unibit_trie = std::make_unique<UnibitTrie>();
-    for (const auto& rule : compressed_rules) {
-        for (const auto& str : rule) {
-            unibit_trie->insert(str);
-        }
-    }
+    // Create initial overlapping and non-overlapping groups (goal is to separate overlapping entries)
+    auto [overlap_groups, non_overlap_groups] = create_overlap_groups(compressed_rules);
 
-    // Now using the compressed rules and the unibit trie, create two sets of groups
-    // 1. Brand new groups created to hold overlapping entries (new_groups)
-    // 2. Groups containing leftover entries from the compressed rules (original_groups)
-    std::vector<Group> new_groups;
-    std::vector<Group> original_groups;
-    for (const auto& rule : compressed_rules) {
-        Group original_group;
-        for (const auto& str : rule) {
-            bool exists_overlap = unibit_trie->find_overlap(str);
-            if (exists_overlap) {
-                // if there exists overlap, first check if the prefix does not already exist in any of the new hash sets
-                bool prefix_found = false;
-                for (const auto& group : new_groups) {
-                    if (group.find(str) != group.end()) {
-                        prefix_found = true;
-                        break;
-                    }
-                }
-                if (!prefix_found) {
-                    Group new_group = {str};
-                    new_groups.push_back(new_group);
-                }
-            }
-            else {
-                original_group.insert(str);
-            }
-        }
-        if (original_group.size() != 0){
-            original_groups.push_back(original_group);
-        }
-    }
-
-    print_groups(original_groups, "Original Groups", "G");
+    print_groups(non_overlap_groups, "Non-overlap Groups", "G");
     std::cout << std::endl;
-    print_groups(new_groups, "New Groups", "G");
+    print_groups(overlap_groups, "Overlap Groups", "G");
     std::cout << std::endl;
 
-    // Now we need to form the atomic units for the original_groups (not for new_groups because they are size 1)
-    // Store new atomic groups in atomic_groups, use atomic_map to map prefix ==> index of its atomic group in the vector (performance optimization)
-    std::vector<Group> atomic_groups;
-    std::unordered_map<std::string, int> atomic_map;
-
-    int atomic_index = 0;
-    for (const auto& original_group : original_groups) {
-        Group atomic_group;
-        std::unordered_set<int> matched_indices;
-        // for a given original_group, assemble list of matching indices (union of atomic groups to check)
-        for (const auto& str : original_group) {
-            if (atomic_map.find(str) != atomic_map.end()) {
-                matched_indices.insert(atomic_map[str]); // if found in pre-existing atomic group, append index (hash set for unique)
-            }
-            else {
-                atomic_map[str] = atomic_index; // if not found in pre-existing atomic group, add to new atomic group
-                atomic_group.insert(str);
-            }
-        }
-
-        // if new atomic group created, add to list of atomic groups
-        if (atomic_group.size() > 0) {
-            atomic_groups.push_back(atomic_group);
-            atomic_index++;
-        }
-
-        for (int curr : matched_indices) { // for each matched atomic group, see if it is necessary to splinter/branch off new sub-group
-            Group atomic_splinter;
-            std::vector<std::string> to_remove;
-            for (const auto& str : atomic_groups[curr]) {
-                // for each prefix in the union of matched atomic groups, if it doesn't exist in the original group, splinter the atomic group
-                if (original_group.find(str) == original_group.end()) {
-                    // if entry in atomic group is not found in original group, it means we need to split atomic group into subsets
-                    atomic_map[str] = atomic_index;
-                    atomic_splinter.insert(str);
-                    to_remove.push_back(str);
-                }
-            }
-
-            if (atomic_splinter.size() > 0) {
-                atomic_groups.push_back(atomic_splinter);
-                atomic_index++;
-                for (const auto& str : to_remove) {
-                    atomic_groups[curr].erase(str); // if adding prefix to new atomic group, remove trace of it from old atomic group
-                }
-            }
-        }
-    }
+    // From the non-overlapping groups, create the atomic groups for GID assignment
+    std::vector<Group> atomic_groups = create_atomic_groups(non_overlap_groups);
 
     print_groups(atomic_groups, "Atomic Groups", "G");
     std::cout << std::endl;
@@ -499,4 +412,115 @@ void print_groups(const std::vector<Group>& groups, const std::string& msg, cons
         }
         std::cout << std::endl;
     }
+}
+
+std::vector<Rule> optimize_rules(const std::vector<Rule>& original_rules) {
+    // For each raw rule, build an optimization trie to perform prefix aggregation and compression
+    // Traverse each optimization trie and compile all the compressed rules back together
+    std::vector<Rule> compressed_rules;
+
+    auto optimization_tries = build_optimization_tries(original_rules);
+    for (std::size_t i = 0; i < optimization_tries.size(); i++) {
+        Rule prefixes = optimization_tries[i]->traverse();
+        compressed_rules.push_back(prefixes);
+    }
+
+    return compressed_rules;
+}
+
+std::pair<std::vector<Group>, std::vector<Group>> create_overlap_groups(const std::vector<Rule>& compressed_rules) {
+    // Initialize a unibit trie containing all the prefixes for a given field
+    std::unique_ptr<UnibitTrie> unibit_trie = std::make_unique<UnibitTrie>();
+    for (const auto& rule : compressed_rules) {
+        for (const auto& str : rule) {
+            unibit_trie->insert(str);
+        }
+    }
+
+    // Now using the compressed rules and the unibit trie, create two sets of groups
+    // 1. Brand new groups created to hold overlapping entries (overlap_groups)
+    // 2. Groups containing leftover entries from the compressed rules (non_overlap_groups)
+    std::vector<Group> overlap_groups;
+    std::vector<Group> non_overlap_groups;
+    for (const auto& rule : compressed_rules) {
+        Group non_overlap_group;
+        for (const auto& str : rule) {
+            bool exists_overlap = unibit_trie->find_overlap(str);
+            if (exists_overlap) {
+                // if there exists overlap, first check if the prefix does not already exist in any of the new hash sets
+                bool prefix_found = false;
+                for (const auto& group : overlap_groups) {
+                    if (group.find(str) != group.end()) {
+                        prefix_found = true;
+                        break;
+                    }
+                }
+                if (!prefix_found) {
+                    Group overlap_group = {str};
+                    overlap_groups.push_back(overlap_group);
+                }
+            }
+            else {
+                non_overlap_group.insert(str);
+            }
+        }
+        if (non_overlap_group.size() != 0){
+            non_overlap_groups.push_back(non_overlap_group);
+        }
+    }
+
+    return {overlap_groups, non_overlap_groups};
+}
+
+std::vector<Group> create_atomic_groups(const std::vector<Group>& non_overlap_groups) {
+    // Now we need to form the atomic units for the non_overlap_groups (not for overlap_groups because they are size 1)
+    // Store new atomic groups in atomic_groups, use atomic_map to map prefix ==> index of its atomic group in the vector (performance optimization)
+    std::vector<Group> atomic_groups;
+    std::unordered_map<std::string, int> atomic_map;
+
+    int atomic_index = 0;
+    for (const auto& non_overlap_group : non_overlap_groups) {
+        Group atomic_group;
+        std::unordered_set<int> matched_indices;
+        // for a given non_overlap_group, assemble list of matching indices (union of atomic groups to check)
+        for (const auto& str : non_overlap_group) {
+            if (atomic_map.find(str) != atomic_map.end()) {
+                matched_indices.insert(atomic_map[str]); // if found in pre-existing atomic group, append index (hash set for unique)
+            }
+            else {
+                atomic_map[str] = atomic_index; // if not found in pre-existing atomic group, add to new atomic group
+                atomic_group.insert(str);
+            }
+        }
+
+        // if new atomic group created, add to list of atomic groups
+        if (atomic_group.size() > 0) {
+            atomic_groups.push_back(atomic_group);
+            atomic_index++;
+        }
+
+        for (int curr : matched_indices) { // for each matched atomic group, see if it is necessary to splinter/branch off new sub-group
+            Group atomic_splinter;
+            std::vector<std::string> to_remove;
+            for (const auto& str : atomic_groups[curr]) {
+                // for each prefix in the union of matched atomic groups, if it doesn't exist in the non_overlap_group, splinter the atomic group
+                if (non_overlap_group.find(str) == non_overlap_group.end()) {
+                    // if entry in atomic group is not found in non_overlap_group, it means we need to split atomic group into subsets
+                    atomic_map[str] = atomic_index;
+                    atomic_splinter.insert(str);
+                    to_remove.push_back(str);
+                }
+            }
+
+            if (atomic_splinter.size() > 0) {
+                atomic_groups.push_back(atomic_splinter);
+                atomic_index++;
+                for (const auto& str : to_remove) {
+                    atomic_groups[curr].erase(str); // if adding prefix to new atomic group, remove trace of it from old atomic group
+                }
+            }
+        }
+    }
+
+    return atomic_groups;
 }
