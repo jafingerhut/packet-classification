@@ -250,9 +250,9 @@ int main(int argc, char* argv[]) {
     // Create initial overlapping and non-overlapping groups (goal is to separate overlapping entries)
     auto [overlap_groups, non_overlap_groups] = create_overlap_groups(compressed_rules);
 
-    print_groups(non_overlap_groups, "Non-overlap Groups", "G");
-    std::cout << std::endl;
     print_groups(overlap_groups, "Overlap Groups", "G");
+    std::cout << std::endl;
+    print_groups(non_overlap_groups, "Non-overlap Groups", "G");
     std::cout << std::endl;
 
     // From the non-overlapping groups, create the atomic groups for GID assignment
@@ -488,6 +488,15 @@ std::pair<std::vector<Group>, std::vector<Group>> create_overlap_groups(const st
             non_overlap_groups.push_back(non_overlap_group);
         }
     }
+
+    // Sort the overlap_groups by decreasing length (reflect eventual TCAM ordering)
+    std::sort(overlap_groups.begin(), overlap_groups.end(), 
+        [](const Group& a, const Group& b) {
+            // Extract the only element from each group
+            const std::string& str_a = *a.begin();
+            const std::string& str_b = *b.begin();
+            return str_a.length() > str_b.length(); // Sort by decreasing length
+        });
 
     return {overlap_groups, non_overlap_groups};
 }
