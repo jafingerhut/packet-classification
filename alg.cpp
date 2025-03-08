@@ -9,6 +9,7 @@
 #include <string>
 #include <stdexcept>
 #include <memory>
+#include <algorithm>
 
 using Rule = std::vector<std::string>;
 using Group = std::unordered_set<std::string>;
@@ -380,8 +381,20 @@ void print_rules(const std::vector<Rule>& rules, const std::string& msg) {
     std::cout << msg << std::endl;
     for (std::size_t i = 0; i < rules.size(); i++) {
         std::cout << "R" << i << ": ";
-        for (const std::string& element : rules[i]) {
-            if (element == "") {
+
+        // Make a copy of the elements to sort
+        std::vector<std::string> sorted_elements = rules[i];
+        // Sort by length first, then lexicographically
+        std::sort(sorted_elements.begin(), sorted_elements.end(), 
+            [](const std::string& a, const std::string& b) {
+                if (a.length() != b.length()) {
+                    return a.length() < b.length(); // Sort by length
+                }
+                return a < b; // Sort alphabetically if lengths are equal
+            });
+
+        for (const std::string& element : sorted_elements) {
+            if (element.empty()) {
                 std::cout << '*' << " ";
             }
             else {
@@ -397,8 +410,20 @@ void print_groups(const std::vector<Group>& groups, const std::string& msg, cons
     std::cout << msg << std::endl;
     for (std::size_t i = 0; i < groups.size(); i++) {
         std::cout << label << i << ": ";
-        for (const std::string& element : groups[i]) {
-            if (element == "") {
+
+        // Make a copy of the elements to sort
+        std::vector<std::string> sorted_elements(groups[i].begin(), groups[i].end());
+        // Sort by length first, then lexicographically
+        std::sort(sorted_elements.begin(), sorted_elements.end(), 
+            [](const std::string& a, const std::string& b) {
+                if (a.length() != b.length()) {
+                    return a.length() < b.length(); // Sort by length
+                }
+                return a < b; // Sort alphabetically if lengths are equal
+            });
+
+        for (const std::string& element : sorted_elements) {
+            if (element.empty()) {
                 std::cout << '*' << " ";
             }
             else {
