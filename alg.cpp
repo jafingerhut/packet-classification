@@ -270,28 +270,41 @@ class PISTree {
             
             std::queue<PISNode*> q;
             q.push(root.get());
+            int level = 0;
 
             while (!q.empty()) {
-                PISNode* current = q.front();
-                q.pop();
+                std::cout << "Level " << level << ":" << std::endl;
+                int curr_size = q.size();
 
-                // Print stored strings at this node
-                if (current->stored_strings.empty()) {
-                    std::cout << "Root" << std::endl;
-                }
+                for(int i = 0; i < curr_size; i++) {
+                    PISNode* current = q.front();
+                    q.pop();
 
-                else {
-                    std::cout << "[ ";
-                    for (const std::string& str : current->stored_strings) {
-                        std::cout << str << " ";
+                    // Print stored strings at this node
+                    if (current->stored_strings.empty()) {
+                        std::cout << "Root" << std::endl;
                     }
-                    std::cout << "]" << std::endl;
+
+                    else {
+                        std::cout << "[ ";
+                        for (const std::string& str : current->stored_strings) {
+                            if (str.empty()) {
+                                std::cout << "* ";
+                            }
+                            else {
+                                std::cout << str << " ";
+                            }
+                        }
+                        std::cout << "]" << std::endl;
+                    }
+                    
+                    // Enqueue all child nodes
+                    for (const auto& child : current->children) {
+                        q.push(child.get()); // Use .get() to obtain the raw pointer
+                    }
                 }
-                
-                // Enqueue all child nodes
-                for (const auto& child : current->children) {
-                    q.push(child.get()); // Use .get() to obtain the raw pointer
-                }
+
+                level++;
             }
         }
 
