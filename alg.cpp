@@ -6,6 +6,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <vector>
+#include <queue>
 #include <string>
 #include <stdexcept>
 #include <memory>
@@ -13,9 +14,11 @@
 
 using Rule = std::vector<std::string>;
 using Group = std::unordered_set<std::string>;
+using GroupID = std::string;
 
 enum class IPVersion { IPV4, IPV6 };
 
+// Regular node type used for unibit trie representations
 struct Node {
     std::unique_ptr<Node> left;
     std::unique_ptr<Node> right;
@@ -23,6 +26,24 @@ struct Node {
 
     // Constructor
     Node() : left(nullptr), right(nullptr), is_end_of_prefix(false) {}
+};
+
+// Special node type used for GID assignment (PIS encoding)
+struct PISNode {
+    std::vector<std::unique_ptr<PISNode>> children;   // Arbitrary number of child nodes
+    Group stored_strings;                             // Hash set of strings stored at this node
+    GroupID group_id;                                 // Assigned Group ID (string)
+    bool is_dummy;                                    // Flag indicating if this is a dummy node
+    int suffix_cost;                                  // Suffix cost
+    int infix_cost;                                   // Infix cost
+
+    // Constructor
+    PISNode() : group_id(""), is_dummy(false), suffix_cost(-1), infix_cost(-1) {}
+
+    // Add a child node
+    void add_child(std::unique_ptr<PISNode> child) {
+        children.push_back(std::move(child));
+    }
 };
 
 class OptimizationTrie {
@@ -127,6 +148,10 @@ class UnibitTrie {
         // Constructor
         UnibitTrie() : root(std::make_unique<Node>()) {}
 
+        Node* get_root() {
+            return root.get();
+        }
+
         // Insert a binary string into the unibit trie
         void insert(const std::string& prefix) {
             Node* current = root.get();
@@ -201,6 +226,88 @@ class UnibitTrie {
         }
 };
 
+class PISTree {
+    private:
+        std::unique_ptr<PISNode> root;
+
+    public:
+        // Constructor
+        PISTree() : root(std::make_unique<PISNode>()) {}
+
+        void insert_atomic_groups(const std::vector<Group>& atomic_groups) {
+            for (const auto& group : atomic_groups) {
+                auto new_node = std::make_unique<PISNode>();
+                for (const auto& str : group) {
+                    new_node->stored_strings.insert(str);
+                }
+                root->add_child(std::move(new_node));
+            }
+        }
+
+        void insert_overlap_groups(const std::vector<Group>& overlap_groups) {
+            // Initialize a unibit trie containing all the overlapping prefixes
+            std::unique_ptr<UnibitTrie> unibit_trie = std::make_unique<UnibitTrie>();
+            for (const auto& group : overlap_groups) {
+                for (const auto& str : group) {
+                    unibit_trie->insert(str);
+                }
+            }
+
+            // Perform DFS traversal to create PIS nodes for overlap_groups
+            dfs_traversal(unibit_trie->get_root(), "", root.get());
+        }
+
+        void add_dummies() {
+            return;
+        }
+
+        void print_level_order() {
+            if (!root) {
+                return; // Edge case: Empty tree
+            }
+            
+            std::queue<PISNode*> q;
+            q.push(root.get());
+
+            while (!q.empty()) {
+                PISNode* current = q.front();
+                q.pop();
+
+                // Print stored strings at this node
+                std::cout << "[ ";
+                for (const std::string& str : current->stored_strings) {
+                    std::cout << str << " ";
+                }
+                std::cout << "]" << std::endl;
+
+                // Enqueue all child nodes
+                for (const auto& child : current->children) {
+                    q.push(child.get()); // Use .get() to obtain the raw pointer
+                }
+            }
+        }
+
+    private:
+        void dfs_traversal(Node* node, const std::string prefix, PISNode* parent) {
+            if (!node) return;
+
+            if (node->is_end_of_prefix) {
+                auto new_node = std::make_unique<PISNode>();
+                new_node->stored_strings.insert(prefix);
+                parent->add_child(std::move(new_node));
+                parent = parent->children.back().get();
+            }
+
+            if (node->left) {
+                dfs_traversal(node->left.get(), prefix + "0", parent);
+            }
+            
+            if (node->right) {
+                dfs_traversal(node->right.get(), prefix + "1", parent);
+            }
+        }
+};
+
 // Function prototypes
 IPVersion parse_ip_version(const std::string& version);
 std::ifstream open_file(const std::string& file_name);
@@ -213,6 +320,7 @@ void print_groups(const std::vector<Group>& groups, const std::string& msg, cons
 std::vector<Rule> optimize_rules(const std::vector<Rule>& original_rules);
 std::pair<std::vector<Group>, std::vector<Group>> create_overlap_groups(const std::vector<Rule>& compressed_rules);
 std::vector<Group> create_atomic_groups(const std::vector<Group>& non_overlap_groups);
+void assign_gids(const std::vector<Group>& overlap_groups, const std::vector<Group>& atomic_groups);
 
 int main(int argc, char* argv[]) {
     IPVersion version;
@@ -260,6 +368,9 @@ int main(int argc, char* argv[]) {
 
     print_groups(atomic_groups, "Atomic Groups", "G");
     std::cout << std::endl;
+
+    // Perform GID assignment
+    assign_gids(overlap_groups, atomic_groups);
 
     return EXIT_SUCCESS;
 }
@@ -497,7 +608,6 @@ std::pair<std::vector<Group>, std::vector<Group>> create_overlap_groups(const st
             const std::string& str_b = *b.begin();
             return str_a.length() > str_b.length(); // Sort by decreasing length
         });
-
     return {overlap_groups, non_overlap_groups};
 }
 
@@ -558,4 +668,13 @@ std::vector<Group> create_atomic_groups(const std::vector<Group>& non_overlap_gr
     }
 
     return atomic_groups;
+}
+
+void assign_gids(const std::vector<Group>& overlap_groups, const std::vector<Group>& atomic_groups) {
+    // Initialize an empty PIS tree
+    std::unique_ptr<PISTree> pis_tree = std::make_unique<PISTree>();
+    pis_tree->insert_atomic_groups(atomic_groups);
+    pis_tree->insert_overlap_groups(overlap_groups);
+    
+    pis_tree->print_level_order();
 }
