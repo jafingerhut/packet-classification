@@ -259,6 +259,34 @@ class PISTree {
 
         // Adds one dummy node to every non-leaf, non-root node
         void add_dummies() {
+            if (!root) {
+                std::cout << "Empty Tree" << std::endl;
+                return; // Edge case: Empty tree
+            }
+
+            std::queue<PISNode*> q;
+            for (const auto& child : root->children) {
+                q.push(child.get()); // Use .get() to obtain the raw pointer
+            }
+
+            while (!q.empty()) {
+                PISNode* current = q.front();
+                q.pop();
+
+                // PIS node contains at least one child, add a dummy child to it
+                if (!current->children.empty()) {
+                    auto new_node = std::make_unique<PISNode>();
+                    new_node->is_dummy = true;
+                    current->add_child(std::move(new_node));
+                }
+                
+                // Enqueue all child nodes
+                for (const auto& child : current->children) {
+                    if (!child->is_dummy) {
+                        q.push(child.get()); // Only add non-dummy nodes to the queue
+                    }
+                }
+            }
             return;
         }
 
@@ -281,8 +309,12 @@ class PISTree {
                     q.pop();
 
                     // Print stored strings at this node
-                    if (current->stored_strings.empty()) {
+                    if (current->stored_strings.empty() && !current->is_dummy) {
                         std::cout << "Root" << std::endl;
+                    }
+
+                    else if (current->is_dummy) {
+                        std::cout << "Dummy" << std::endl;
                     }
 
                     else {
@@ -697,8 +729,8 @@ void assign_gids(const std::vector<Group>& overlap_groups, const std::vector<Gro
     pis_tree->insert_atomic_groups(atomic_groups);
     pis_tree->insert_overlap_groups(overlap_groups);
     
-    pis_tree->print_level_order(); // Sanity check
-
     // Now create all the dummy nodes
     pis_tree->add_dummies();
+
+    pis_tree->print_level_order(); // Sanity check
 }
