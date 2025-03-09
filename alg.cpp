@@ -257,12 +257,14 @@ class PISTree {
             dfs_traversal(unibit_trie->get_root(), "", root.get());
         }
 
+        // Adds one dummy node to every non-leaf, non-root node
         void add_dummies() {
             return;
         }
 
         void print_level_order() {
             if (!root) {
+                std::cout << "Empty Tree" << std::endl;
                 return; // Edge case: Empty tree
             }
             
@@ -274,12 +276,18 @@ class PISTree {
                 q.pop();
 
                 // Print stored strings at this node
-                std::cout << "[ ";
-                for (const std::string& str : current->stored_strings) {
-                    std::cout << str << " ";
+                if (current->stored_strings.empty()) {
+                    std::cout << "Root" << std::endl;
                 }
-                std::cout << "]" << std::endl;
 
+                else {
+                    std::cout << "[ ";
+                    for (const std::string& str : current->stored_strings) {
+                        std::cout << str << " ";
+                    }
+                    std::cout << "]" << std::endl;
+                }
+                
                 // Enqueue all child nodes
                 for (const auto& child : current->children) {
                     q.push(child.get()); // Use .get() to obtain the raw pointer
@@ -676,5 +684,8 @@ void assign_gids(const std::vector<Group>& overlap_groups, const std::vector<Gro
     pis_tree->insert_atomic_groups(atomic_groups);
     pis_tree->insert_overlap_groups(overlap_groups);
     
-    pis_tree->print_level_order();
+    pis_tree->print_level_order(); // Sanity check
+
+    // Now create all the dummy nodes
+    pis_tree->add_dummies();
 }
