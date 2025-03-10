@@ -732,5 +732,8 @@ void assign_gids(const std::vector<Group>& overlap_groups, const std::vector<Gro
     // Now create all the dummy nodes
     pis_tree->add_dummies();
 
+    // Now begin to assign infix/suffix costs
+    
+
     pis_tree->print_level_order(); // Sanity check
 }
