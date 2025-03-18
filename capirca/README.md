@@ -1,4 +1,4 @@
-## Example Classifier
+## Example Classifier Used
 The following table represents an example classifier with IPv4 source addresses, destination ports, and protocols.
 
 | IPv4 Src | Dst Port | Protocol | Action |
