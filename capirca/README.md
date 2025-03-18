@@ -14,5 +14,5 @@ The table below shows whether different Capirca generators allow groups and over
 
 | Generator | File | Allows Groups | Allows Overlap |
 |-------|-----|------|---------|
-| Kubernetes NetworkPolicy | k8s.yml | ✅ | ✅ |
-| SONiC ACLs | sonic.json | ❌ | ✅ |
+| Kubernetes NetworkPolicy | [k8s.yml](https://github.com/rfchang/packet-classification/blob/main/capirca/k8s.yml) | ✅ | ✅ |
+| SONiC ACLs | [sonic.json](https://github.com/rfchang/packet-classification/blob/main/capirca/sonic.json) | ❌ | ✅ |
