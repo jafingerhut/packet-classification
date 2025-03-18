@@ -1,0 +1,39 @@
+{
+  "ACL_RULE": {
+    "SamplePolicy|RULE_10": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65526"
+    },
+    "SamplePolicy|RULE_20": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65516"
+    },
+    "SamplePolicy|RULE_30": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.0.0/16",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "65506"
+    },
+    "SamplePolicy|RULE_40": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "L4_DST_PORT": "3306",
+      "PRIORITY": "65496"
+    },
+    "SamplePolicy|RULE_50": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "3306",
+      "PRIORITY": "65486"
+    }
+  }
+}
