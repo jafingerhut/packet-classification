@@ -726,7 +726,7 @@ std::vector<Group> create_atomic_groups(const std::vector<Group>& non_overlap_gr
 void assign_gids(const std::vector<Group>& overlap_groups, const std::vector<Group>& atomic_groups) {
     // Initialize an empty PIS tree
     std::unique_ptr<PISTree> pis_tree = std::make_unique<PISTree>();
-    pis_tree->insert_atomic_groups(atomic_groups);
+    // pis_tree->insert_atomic_groups(atomic_groups);
     pis_tree->insert_overlap_groups(overlap_groups);
     
     // Now create all the dummy nodes
