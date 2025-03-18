@@ -12,7 +12,7 @@ The following table represents an example classifier with IPv4 source addresses,
 ## Capirca Generator Capabilities
 The table below shows whether different Capirca generators allow groups and overlap.
 
-| Generator | Allows Groups | Allows Overlap |
-|-------|-----|---------|
-| Kubernetes NetworkPolicy | ✅ | ✅ |
-| SONiC ACLs | ❌ | ✅ |
+| Generator | File | Allows Groups | Allows Overlap |
+|-------|-----|------|---------|
+| Kubernetes NetworkPolicy | k8s.yml | ✅ | ✅ |
+| SONiC ACLs | sonic.json | ❌ | ✅ |
