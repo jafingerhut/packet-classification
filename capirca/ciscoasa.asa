@@ -1,0 +1,19 @@
+clear configure access-list SamplePolicy
+access-list SamplePolicy remark $Id:$
+access-list SamplePolicy remark $Date:$
+access-list SamplePolicy remark $Revision:$
+access-list SamplePolicy remark Cisco ASA policy for overlap case.
+
+
+access-list SamplePolicy remark accept-web-services
+access-list SamplePolicy extended permit tcp 1.2.3.0 255.255.255.0 any eq www
+access-list SamplePolicy extended permit tcp 1.2.3.0 255.255.255.0 any eq https
+
+
+access-list SamplePolicy remark accept-ssh
+access-list SamplePolicy extended permit tcp 1.2.0.0 255.255.0.0 any eq ssh
+
+
+access-list SamplePolicy remark accept-mysql
+access-list SamplePolicy extended permit tcp 1.0.0.0 255.0.0.0 any eq 3306
+access-list SamplePolicy extended permit tcp host 8.8.8.8 any eq 3306

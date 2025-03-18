@@ -1,0 +1,82 @@
+groups {
+    replace:
+    /*
+     ** $Id:$
+     ** $Date:$
+     ** $Revision:$
+     **
+     ** Juniper MSMPC policy for overlap case.
+     */
+    SamplePolicy {
+        services {
+            stateful-firewall {
+                rule SamplePolicy {
+                    match-direction input;
+                    term accept-web-services {
+                        from {
+                            source-address {
+                                1.2.3.0/24;
+                            }
+                            application-sets SamplePolicyaccept-web-services-app;
+                        }
+                        then {
+                            accept;
+                        }
+                    }
+                    term accept-ssh {
+                        from {
+                            source-address {
+                                1.2.0.0/16;
+                            }
+                            application-sets SamplePolicyaccept-ssh-app;
+                        }
+                        then {
+                            accept;
+                        }
+                    }
+                    term accept-mysql {
+                        from {
+                            source-address {
+                                1.0.0.0/8;
+                                8.8.8.8/32;
+                            }
+                            application-sets SamplePolicyaccept-mysql-app;
+                        }
+                        then {
+                            accept;
+                        }
+                    }
+                }
+            }
+        }
+        applications {
+            application SamplePolicyaccept-mysql-app1 {
+                protocol tcp;
+                destination-port 3306;
+            }
+            application SamplePolicyaccept-ssh-app1 {
+                protocol tcp;
+                destination-port 22;
+            }
+            application SamplePolicyaccept-web-services-app1 {
+                protocol tcp;
+                destination-port 80;
+            }
+            application SamplePolicyaccept-web-services-app2 {
+                protocol tcp;
+                destination-port 443;
+            }
+            application-set SamplePolicyaccept-mysql-app {
+                application SamplePolicyaccept-mysql-app1;
+            }
+            application-set SamplePolicyaccept-ssh-app {
+                application SamplePolicyaccept-ssh-app1;
+            }
+            application-set SamplePolicyaccept-web-services-app {
+                application SamplePolicyaccept-web-services-app1;
+                application SamplePolicyaccept-web-services-app2;
+            }
+        }
+    }
+}
+apply-groups SamplePolicy;

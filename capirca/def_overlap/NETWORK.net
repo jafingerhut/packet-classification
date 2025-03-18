@@ -1,0 +1,12 @@
+#
+# Naming definitions for overlap case
+#
+
+DST = 255.255.255.0/24
+
+SRC_1 = 1.2.3.0/24
+
+SRC_2 = 1.2.0.0/16
+
+SRC_3 = 1.0.0.0/8
+        8.8.8.8/32

@@ -1,0 +1,25 @@
+header {
+  comment:: "Cisco ASA policy for overlap case."
+  target:: ciscoasa SamplePolicy
+}
+
+term accept-web-services {
+  source-address:: SRC_1
+  destination-port:: WEB_SERVICES
+  protocol:: tcp
+  action:: accept
+}
+
+term accept-ssh {
+  source-address:: SRC_2
+  destination-port:: SSH
+  protocol:: tcp
+  action:: accept
+}
+
+term accept-mysql {
+  source-address:: SRC_3
+  destination-port:: MYSQL
+  protocol:: tcp
+  action:: accept
+}

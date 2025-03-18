@@ -1,0 +1,86 @@
+security {
+    replace: address-book {
+        global {
+                address SRC_1_0 1.2.3.0/24;
+                address SRC_2_0 1.2.0.0/16;
+                address SRC_3_0 1.0.0.0/8;
+                address SRC_3_1 8.8.8.8/32;
+                address-set SRC_1 {
+                    address SRC_1_0;
+                }
+                address-set SRC_2 {
+                    address SRC_2_0;
+                }
+                address-set SRC_3 {
+                    address SRC_3_0;
+                    address SRC_3_1;
+                }
+        }
+    }
+    /*
+    $Id:$
+    $Date:$
+    $Revision:$
+    */
+    replace: policies {
+        /*
+        Juniper SRX policy for overlap case.
+        */
+        from-zone Zone1 to-zone Zone2 {
+            policy accept-web-services {
+                match {
+                    source-address [ SRC_1 ];
+                    destination-address any;
+                    application accept-web-services-app;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy accept-ssh {
+                match {
+                    source-address [ SRC_2 ];
+                    destination-address any;
+                    application accept-ssh-app;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy accept-mysql {
+                match {
+                    source-address [ SRC_3 ];
+                    destination-address any;
+                    application accept-mysql-app;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+}
+replace: applications {
+    application accept-mysql-app1 {
+        term t1 protocol tcp destination-port 3306;
+    }
+    application accept-ssh-app1 {
+        term t1 protocol tcp destination-port 22;
+    }
+    application accept-web-services-app1 {
+        term t1 protocol tcp destination-port 80;
+    }
+    application accept-web-services-app2 {
+        term t2 protocol tcp destination-port 443;
+    }
+    application-set accept-mysql-app {
+        application accept-mysql-app1;
+    }
+    application-set accept-ssh-app {
+        application accept-ssh-app1;
+    }
+    application-set accept-web-services-app {
+        application accept-web-services-app1;
+        application accept-web-services-app2;
+    }
+}
