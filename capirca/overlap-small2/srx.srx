@@ -1,0 +1,124 @@
+security {
+    replace: address-book {
+        global {
+                address SRC_1_0 1.2.3.0/24;
+                address SRC_1_1 10.1.1.0/24;
+                address SRC_1_2 10.2.2.0/24;
+                address SRC_1_3 10.3.3.0/24;
+                address SRC_1_4 10.4.4.0/24;
+                address SRC_1_5 10.5.5.0/24;
+                address SRC_1_6 10.6.6.0/24;
+                address SRC_1_7 10.7.7.0/24;
+                address SRC_1_8 10.8.8.0/24;
+                address SRC_1_9 10.9.9.0/24;
+                address SRC_2_0 1.0.0.0/8;
+                address SRC_2_1 8.8.8.8/32;
+                address SRC_2_2 11.1.1.0/24;
+                address SRC_2_3 11.2.2.0/24;
+                address SRC_2_4 11.3.3.0/24;
+                address SRC_2_5 11.4.4.0/24;
+                address SRC_2_6 11.5.5.0/24;
+                address SRC_2_7 11.6.6.0/24;
+                address SRC_2_8 11.7.7.0/24;
+                address SRC_2_9 11.8.8.0/24;
+                address SRC_3_0 1.2.3.0/24;
+                address SRC_3_1 10.2.2.0/24;
+                address SRC_3_2 10.4.4.0/24;
+                address SRC_3_3 10.6.6.0/24;
+                address SRC_3_4 10.8.8.0/24;
+                address SRC_4_0 8.8.8.8/32;
+                address SRC_4_1 11.2.2.0/24;
+                address SRC_4_2 11.4.4.0/24;
+                address SRC_4_3 11.6.6.0/24;
+                address SRC_4_4 11.8.8.0/24;
+                address-set SRC_1 {
+                    address SRC_1_0;
+                    address SRC_1_1;
+                    address SRC_1_2;
+                    address SRC_1_3;
+                    address SRC_1_4;
+                    address SRC_1_5;
+                    address SRC_1_6;
+                    address SRC_1_7;
+                    address SRC_1_8;
+                    address SRC_1_9;
+                }
+                address-set SRC_2 {
+                    address SRC_2_0;
+                    address SRC_2_1;
+                    address SRC_2_2;
+                    address SRC_2_3;
+                    address SRC_2_4;
+                    address SRC_2_5;
+                    address SRC_2_6;
+                    address SRC_2_7;
+                    address SRC_2_8;
+                    address SRC_2_9;
+                }
+                address-set SRC_3 {
+                    address SRC_3_0;
+                    address SRC_3_1;
+                    address SRC_3_2;
+                    address SRC_3_3;
+                    address SRC_3_4;
+                }
+                address-set SRC_4 {
+                    address SRC_4_0;
+                    address SRC_4_1;
+                    address SRC_4_2;
+                    address SRC_4_3;
+                    address SRC_4_4;
+                }
+        }
+    }
+    /*
+    $Id:$
+    $Date:$
+    $Revision:$
+    */
+    replace: policies {
+        /*
+        Juniper SRX policy for overlap case.
+        */
+        from-zone Zone1 to-zone Zone2 {
+            policy accept-web-services {
+                match {
+                    source-address [ SRC_1 ];
+                    destination-address [ SRC_2 ];
+                    application accept-web-services-app;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy accept-ssh {
+                match {
+                    source-address [ SRC_3 ];
+                    destination-address [ SRC_4 ];
+                    application accept-ssh-app;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+}
+replace: applications {
+    application accept-ssh-app1 {
+        term t1 protocol tcp destination-port 22;
+    }
+    application accept-web-services-app1 {
+        term t1 protocol tcp destination-port 80;
+    }
+    application accept-web-services-app2 {
+        term t2 protocol tcp destination-port 443;
+    }
+    application-set accept-ssh-app {
+        application accept-ssh-app1;
+    }
+    application-set accept-web-services-app {
+        application accept-web-services-app1;
+        application accept-web-services-app2;
+    }
+}

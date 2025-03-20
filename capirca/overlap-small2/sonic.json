@@ -1,0 +1,1804 @@
+{
+  "ACL_RULE": {
+    "SamplePolicy|RULE_10": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65526"
+    },
+    "SamplePolicy|RULE_20": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65516"
+    },
+    "SamplePolicy|RULE_30": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65506"
+    },
+    "SamplePolicy|RULE_40": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65496"
+    },
+    "SamplePolicy|RULE_50": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65486"
+    },
+    "SamplePolicy|RULE_60": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65476"
+    },
+    "SamplePolicy|RULE_70": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65466"
+    },
+    "SamplePolicy|RULE_80": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65456"
+    },
+    "SamplePolicy|RULE_90": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65446"
+    },
+    "SamplePolicy|RULE_100": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65436"
+    },
+    "SamplePolicy|RULE_110": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65426"
+    },
+    "SamplePolicy|RULE_120": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65416"
+    },
+    "SamplePolicy|RULE_130": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65406"
+    },
+    "SamplePolicy|RULE_140": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65396"
+    },
+    "SamplePolicy|RULE_150": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65386"
+    },
+    "SamplePolicy|RULE_160": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65376"
+    },
+    "SamplePolicy|RULE_170": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65366"
+    },
+    "SamplePolicy|RULE_180": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65356"
+    },
+    "SamplePolicy|RULE_190": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65346"
+    },
+    "SamplePolicy|RULE_200": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65336"
+    },
+    "SamplePolicy|RULE_210": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65326"
+    },
+    "SamplePolicy|RULE_220": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65316"
+    },
+    "SamplePolicy|RULE_230": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65306"
+    },
+    "SamplePolicy|RULE_240": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65296"
+    },
+    "SamplePolicy|RULE_250": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65286"
+    },
+    "SamplePolicy|RULE_260": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65276"
+    },
+    "SamplePolicy|RULE_270": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65266"
+    },
+    "SamplePolicy|RULE_280": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65256"
+    },
+    "SamplePolicy|RULE_290": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65246"
+    },
+    "SamplePolicy|RULE_300": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65236"
+    },
+    "SamplePolicy|RULE_310": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65226"
+    },
+    "SamplePolicy|RULE_320": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65216"
+    },
+    "SamplePolicy|RULE_330": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65206"
+    },
+    "SamplePolicy|RULE_340": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65196"
+    },
+    "SamplePolicy|RULE_350": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65186"
+    },
+    "SamplePolicy|RULE_360": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65176"
+    },
+    "SamplePolicy|RULE_370": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65166"
+    },
+    "SamplePolicy|RULE_380": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65156"
+    },
+    "SamplePolicy|RULE_390": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65146"
+    },
+    "SamplePolicy|RULE_400": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.1.1.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65136"
+    },
+    "SamplePolicy|RULE_410": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65126"
+    },
+    "SamplePolicy|RULE_420": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65116"
+    },
+    "SamplePolicy|RULE_430": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65106"
+    },
+    "SamplePolicy|RULE_440": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65096"
+    },
+    "SamplePolicy|RULE_450": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65086"
+    },
+    "SamplePolicy|RULE_460": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65076"
+    },
+    "SamplePolicy|RULE_470": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65066"
+    },
+    "SamplePolicy|RULE_480": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65056"
+    },
+    "SamplePolicy|RULE_490": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65046"
+    },
+    "SamplePolicy|RULE_500": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65036"
+    },
+    "SamplePolicy|RULE_510": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65026"
+    },
+    "SamplePolicy|RULE_520": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "65016"
+    },
+    "SamplePolicy|RULE_530": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "65006"
+    },
+    "SamplePolicy|RULE_540": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64996"
+    },
+    "SamplePolicy|RULE_550": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64986"
+    },
+    "SamplePolicy|RULE_560": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64976"
+    },
+    "SamplePolicy|RULE_570": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64966"
+    },
+    "SamplePolicy|RULE_580": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64956"
+    },
+    "SamplePolicy|RULE_590": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64946"
+    },
+    "SamplePolicy|RULE_600": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64936"
+    },
+    "SamplePolicy|RULE_610": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64926"
+    },
+    "SamplePolicy|RULE_620": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64916"
+    },
+    "SamplePolicy|RULE_630": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64906"
+    },
+    "SamplePolicy|RULE_640": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64896"
+    },
+    "SamplePolicy|RULE_650": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64886"
+    },
+    "SamplePolicy|RULE_660": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64876"
+    },
+    "SamplePolicy|RULE_670": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64866"
+    },
+    "SamplePolicy|RULE_680": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64856"
+    },
+    "SamplePolicy|RULE_690": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64846"
+    },
+    "SamplePolicy|RULE_700": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64836"
+    },
+    "SamplePolicy|RULE_710": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64826"
+    },
+    "SamplePolicy|RULE_720": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64816"
+    },
+    "SamplePolicy|RULE_730": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64806"
+    },
+    "SamplePolicy|RULE_740": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64796"
+    },
+    "SamplePolicy|RULE_750": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64786"
+    },
+    "SamplePolicy|RULE_760": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64776"
+    },
+    "SamplePolicy|RULE_770": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64766"
+    },
+    "SamplePolicy|RULE_780": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64756"
+    },
+    "SamplePolicy|RULE_790": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64746"
+    },
+    "SamplePolicy|RULE_800": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.3.3.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64736"
+    },
+    "SamplePolicy|RULE_810": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64726"
+    },
+    "SamplePolicy|RULE_820": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64716"
+    },
+    "SamplePolicy|RULE_830": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64706"
+    },
+    "SamplePolicy|RULE_840": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64696"
+    },
+    "SamplePolicy|RULE_850": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64686"
+    },
+    "SamplePolicy|RULE_860": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64676"
+    },
+    "SamplePolicy|RULE_870": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64666"
+    },
+    "SamplePolicy|RULE_880": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64656"
+    },
+    "SamplePolicy|RULE_890": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64646"
+    },
+    "SamplePolicy|RULE_900": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64636"
+    },
+    "SamplePolicy|RULE_910": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64626"
+    },
+    "SamplePolicy|RULE_920": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64616"
+    },
+    "SamplePolicy|RULE_930": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64606"
+    },
+    "SamplePolicy|RULE_940": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64596"
+    },
+    "SamplePolicy|RULE_950": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64586"
+    },
+    "SamplePolicy|RULE_960": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64576"
+    },
+    "SamplePolicy|RULE_970": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64566"
+    },
+    "SamplePolicy|RULE_980": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64556"
+    },
+    "SamplePolicy|RULE_990": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64546"
+    },
+    "SamplePolicy|RULE_1000": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64536"
+    },
+    "SamplePolicy|RULE_1010": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64526"
+    },
+    "SamplePolicy|RULE_1020": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64516"
+    },
+    "SamplePolicy|RULE_1030": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64506"
+    },
+    "SamplePolicy|RULE_1040": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64496"
+    },
+    "SamplePolicy|RULE_1050": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64486"
+    },
+    "SamplePolicy|RULE_1060": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64476"
+    },
+    "SamplePolicy|RULE_1070": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64466"
+    },
+    "SamplePolicy|RULE_1080": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64456"
+    },
+    "SamplePolicy|RULE_1090": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64446"
+    },
+    "SamplePolicy|RULE_1100": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64436"
+    },
+    "SamplePolicy|RULE_1110": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64426"
+    },
+    "SamplePolicy|RULE_1120": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64416"
+    },
+    "SamplePolicy|RULE_1130": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64406"
+    },
+    "SamplePolicy|RULE_1140": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64396"
+    },
+    "SamplePolicy|RULE_1150": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64386"
+    },
+    "SamplePolicy|RULE_1160": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64376"
+    },
+    "SamplePolicy|RULE_1170": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64366"
+    },
+    "SamplePolicy|RULE_1180": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64356"
+    },
+    "SamplePolicy|RULE_1190": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64346"
+    },
+    "SamplePolicy|RULE_1200": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.5.5.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64336"
+    },
+    "SamplePolicy|RULE_1210": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64326"
+    },
+    "SamplePolicy|RULE_1220": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64316"
+    },
+    "SamplePolicy|RULE_1230": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64306"
+    },
+    "SamplePolicy|RULE_1240": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64296"
+    },
+    "SamplePolicy|RULE_1250": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64286"
+    },
+    "SamplePolicy|RULE_1260": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64276"
+    },
+    "SamplePolicy|RULE_1270": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64266"
+    },
+    "SamplePolicy|RULE_1280": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64256"
+    },
+    "SamplePolicy|RULE_1290": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64246"
+    },
+    "SamplePolicy|RULE_1300": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64236"
+    },
+    "SamplePolicy|RULE_1310": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64226"
+    },
+    "SamplePolicy|RULE_1320": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64216"
+    },
+    "SamplePolicy|RULE_1330": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64206"
+    },
+    "SamplePolicy|RULE_1340": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64196"
+    },
+    "SamplePolicy|RULE_1350": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64186"
+    },
+    "SamplePolicy|RULE_1360": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64176"
+    },
+    "SamplePolicy|RULE_1370": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64166"
+    },
+    "SamplePolicy|RULE_1380": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64156"
+    },
+    "SamplePolicy|RULE_1390": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64146"
+    },
+    "SamplePolicy|RULE_1400": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64136"
+    },
+    "SamplePolicy|RULE_1410": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64126"
+    },
+    "SamplePolicy|RULE_1420": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64116"
+    },
+    "SamplePolicy|RULE_1430": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64106"
+    },
+    "SamplePolicy|RULE_1440": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64096"
+    },
+    "SamplePolicy|RULE_1450": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64086"
+    },
+    "SamplePolicy|RULE_1460": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64076"
+    },
+    "SamplePolicy|RULE_1470": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64066"
+    },
+    "SamplePolicy|RULE_1480": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64056"
+    },
+    "SamplePolicy|RULE_1490": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64046"
+    },
+    "SamplePolicy|RULE_1500": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64036"
+    },
+    "SamplePolicy|RULE_1510": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64026"
+    },
+    "SamplePolicy|RULE_1520": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "64016"
+    },
+    "SamplePolicy|RULE_1530": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "64006"
+    },
+    "SamplePolicy|RULE_1540": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63996"
+    },
+    "SamplePolicy|RULE_1550": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63986"
+    },
+    "SamplePolicy|RULE_1560": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63976"
+    },
+    "SamplePolicy|RULE_1570": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63966"
+    },
+    "SamplePolicy|RULE_1580": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63956"
+    },
+    "SamplePolicy|RULE_1590": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63946"
+    },
+    "SamplePolicy|RULE_1600": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.7.7.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63936"
+    },
+    "SamplePolicy|RULE_1610": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63926"
+    },
+    "SamplePolicy|RULE_1620": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63916"
+    },
+    "SamplePolicy|RULE_1630": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63906"
+    },
+    "SamplePolicy|RULE_1640": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63896"
+    },
+    "SamplePolicy|RULE_1650": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63886"
+    },
+    "SamplePolicy|RULE_1660": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63876"
+    },
+    "SamplePolicy|RULE_1670": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63866"
+    },
+    "SamplePolicy|RULE_1680": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63856"
+    },
+    "SamplePolicy|RULE_1690": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63846"
+    },
+    "SamplePolicy|RULE_1700": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63836"
+    },
+    "SamplePolicy|RULE_1710": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63826"
+    },
+    "SamplePolicy|RULE_1720": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63816"
+    },
+    "SamplePolicy|RULE_1730": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63806"
+    },
+    "SamplePolicy|RULE_1740": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63796"
+    },
+    "SamplePolicy|RULE_1750": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63786"
+    },
+    "SamplePolicy|RULE_1760": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63776"
+    },
+    "SamplePolicy|RULE_1770": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63766"
+    },
+    "SamplePolicy|RULE_1780": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63756"
+    },
+    "SamplePolicy|RULE_1790": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63746"
+    },
+    "SamplePolicy|RULE_1800": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63736"
+    },
+    "SamplePolicy|RULE_1810": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63726"
+    },
+    "SamplePolicy|RULE_1820": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "1.0.0.0/8",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63716"
+    },
+    "SamplePolicy|RULE_1830": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63706"
+    },
+    "SamplePolicy|RULE_1840": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63696"
+    },
+    "SamplePolicy|RULE_1850": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63686"
+    },
+    "SamplePolicy|RULE_1860": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.1.1.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63676"
+    },
+    "SamplePolicy|RULE_1870": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63666"
+    },
+    "SamplePolicy|RULE_1880": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63656"
+    },
+    "SamplePolicy|RULE_1890": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63646"
+    },
+    "SamplePolicy|RULE_1900": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.3.3.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63636"
+    },
+    "SamplePolicy|RULE_1910": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63626"
+    },
+    "SamplePolicy|RULE_1920": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63616"
+    },
+    "SamplePolicy|RULE_1930": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63606"
+    },
+    "SamplePolicy|RULE_1940": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.5.5.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63596"
+    },
+    "SamplePolicy|RULE_1950": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63586"
+    },
+    "SamplePolicy|RULE_1960": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63576"
+    },
+    "SamplePolicy|RULE_1970": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63566"
+    },
+    "SamplePolicy|RULE_1980": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.7.7.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63556"
+    },
+    "SamplePolicy|RULE_1990": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "80",
+      "PRIORITY": "63546"
+    },
+    "SamplePolicy|RULE_2000": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.9.9.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "443",
+      "PRIORITY": "63536"
+    },
+    "SamplePolicy|RULE_2010": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63526"
+    },
+    "SamplePolicy|RULE_2020": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63516"
+    },
+    "SamplePolicy|RULE_2030": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63506"
+    },
+    "SamplePolicy|RULE_2040": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63496"
+    },
+    "SamplePolicy|RULE_2050": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "1.2.3.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63486"
+    },
+    "SamplePolicy|RULE_2060": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63476"
+    },
+    "SamplePolicy|RULE_2070": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63466"
+    },
+    "SamplePolicy|RULE_2080": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63456"
+    },
+    "SamplePolicy|RULE_2090": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63446"
+    },
+    "SamplePolicy|RULE_2100": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.2.2.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63436"
+    },
+    "SamplePolicy|RULE_2110": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63426"
+    },
+    "SamplePolicy|RULE_2120": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63416"
+    },
+    "SamplePolicy|RULE_2130": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63406"
+    },
+    "SamplePolicy|RULE_2140": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63396"
+    },
+    "SamplePolicy|RULE_2150": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.4.4.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63386"
+    },
+    "SamplePolicy|RULE_2160": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63376"
+    },
+    "SamplePolicy|RULE_2170": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63366"
+    },
+    "SamplePolicy|RULE_2180": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63356"
+    },
+    "SamplePolicy|RULE_2190": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63346"
+    },
+    "SamplePolicy|RULE_2200": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.6.6.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63336"
+    },
+    "SamplePolicy|RULE_2210": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "8.8.8.8/32",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63326"
+    },
+    "SamplePolicy|RULE_2220": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.2.2.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63316"
+    },
+    "SamplePolicy|RULE_2230": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.4.4.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63306"
+    },
+    "SamplePolicy|RULE_2240": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.6.6.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63296"
+    },
+    "SamplePolicy|RULE_2250": {
+      "PACKET_ACTION": "FORWARD",
+      "IP_PROTOCOL": "6",
+      "SRC_IP": "10.8.8.0/24",
+      "DST_IP": "11.8.8.0/24",
+      "L4_DST_PORT": "22",
+      "PRIORITY": "63286"
+    }
+  }
+}
