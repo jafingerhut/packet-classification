@@ -1,0 +1,8 @@
+#
+# Service definitions for overlap case
+#
+
+SSH = 22/tcp
+WEB_SERVICES = 80/tcp
+               443/tcp
+MYSQL = 3306/tcp

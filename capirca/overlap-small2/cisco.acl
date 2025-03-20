@@ -1,0 +1,74 @@
+
+
+object-group network ipv4 SRC_1
+ 1.2.3.0/24
+ 10.1.1.0/24
+ 10.2.2.0/24
+ 10.3.3.0/24
+ 10.4.4.0/24
+ 10.5.5.0/24
+ 10.6.6.0/24
+ 10.7.7.0/24
+ 10.8.8.0/24
+ 10.9.9.0/24
+exit
+
+object-group network ipv4 SRC_2
+ 1.0.0.0/8
+ 8.8.8.8/32
+ 11.1.1.0/24
+ 11.2.2.0/24
+ 11.3.3.0/24
+ 11.4.4.0/24
+ 11.5.5.0/24
+ 11.6.6.0/24
+ 11.7.7.0/24
+ 11.8.8.0/24
+exit
+
+object-group port 80-80
+ eq 80
+exit
+
+object-group port 443-443
+ eq 443
+exit
+
+object-group network ipv4 SRC_3
+ 1.2.3.0/24
+ 10.2.2.0/24
+ 10.4.4.0/24
+ 10.6.6.0/24
+ 10.8.8.0/24
+exit
+
+object-group network ipv4 SRC_4
+ 8.8.8.8/32
+ 11.2.2.0/24
+ 11.4.4.0/24
+ 11.6.6.0/24
+ 11.8.8.0/24
+exit
+
+object-group port 22-22
+ eq 22
+exit
+
+! $Id:$
+! $Date:$
+! $Revision:$
+no ip access-list extended SamplePolicy
+ip access-list extended SamplePolicy
+ remark $Id:$
+ remark Cisco policy for overlap case.
+
+
+ remark accept-web-services
+ permit tcp net-group SRC_1 net-group SRC_2 port-group 80-80
+ permit tcp net-group SRC_1 net-group SRC_2 port-group 443-443
+
+
+ remark accept-ssh
+ permit tcp net-group SRC_3 net-group SRC_4 port-group 22-22
+
+exit
