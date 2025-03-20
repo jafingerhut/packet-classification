@@ -28,7 +28,7 @@ The table below shows whether different Capirca generators allow
 groups and overlap.
 
 | Input file name | Generator | Output File | # rules in output | IP address groups preserved in output file? | Port groups preserved in output file? |
-|-----------------|-----------|------------|-------------|-------------------|---------------------------------------------|---------------------------------------|
+|-----------------|-----------|-------------|-------------------|---------------------------------------------|---------------------------------------|
 | k8singress.pol | Kubernetes NetworkPolicy | (none) [1] | N/A | N/A | N/A |
 | k8segress.pol | Kubernetes NetworkPolicy | (none) [1] | N/A | N/A | N/A |
 | sonic.pol | SONiC ACLs | [sonic.json](sonic.json) | 10x10x2 + 5x5x1 = 225 | no | no |
