@@ -27,19 +27,19 @@ term accept-ssh {
 The table below shows whether different Capirca generators allow
 groups and overlap.
 
-| Input file name | Generator | Supported? | Output File | # rules in output | IP address groups preserved in output file? | Port groups preserved in output file? |
+| Input file name | Generator | Output File | # rules in output | IP address groups preserved in output file? | Port groups preserved in output file? |
 |-----------------|-----------|------------|-------------|-------------------|---------------------------------------------|---------------------------------------|
-| k8singress.pol | Kubernetes NetworkPolicy | no [1] | (none) | N/A | N/A | N/A |
-| k8segress.pol | Kubernetes NetworkPolicy | no [1] | (none) | N/A | N/A | N/A |
-| sonic.pol | SONiC ACLs | yes | [sonic.json](sonic.json) | 10x10x2 + 5x5x1 = 225 | no | no |
-| cisco.pol | Cisco | yes | [cisco.acl](cisco.acl) | 3 | yes | no, expanded |
-| cisconx.pol | Cisco NX | yes | [cisconx.nxacl](cisconx.nxacl) | 3 | yes | no, expanded |
-| ciscoxr.pol | Cisco XR | yes | [ciscoxr.xacl](ciscoxr.xacl) | 3 | yes | no, expanded |
-| ciscoasa.pol | Cisco ASA | yes | [ciscoasa.asa](ciscoasa.asa) | 10x10x2 + 5x5x1 = 225 | no | no |
-| juniper.pol | Juniper | yes | [juniper.jcl](juniper.jcl) | 2 | yes | yes |
-| juniperevo.pol | Juniper EVO | yes | [juniperevo.evojcl](juniperevo.evojcl) | 2 | yes | yes |
-| msmpc.pol | Juniper MSMPC | yes | [msmpc.msmpc](msmpc.msmpc) | 2 | yes | yes |
-| srx.pol | Juniper SRX | yes | [srx.srx](srx.srx) | 2 | yes | yes |
+| k8singress.pol | Kubernetes NetworkPolicy | (none) [1] | N/A | N/A | N/A |
+| k8segress.pol | Kubernetes NetworkPolicy | (none) [1] | N/A | N/A | N/A |
+| sonic.pol | SONiC ACLs | [sonic.json](sonic.json) | 10x10x2 + 5x5x1 = 225 | no | no |
+| cisco.pol | Cisco | [cisco.acl](cisco.acl) | 3 | yes | no, expanded |
+| cisconx.pol | Cisco NX | [cisconx.nxacl](cisconx.nxacl) | 3 | yes | no, expanded |
+| ciscoxr.pol | Cisco XR | [ciscoxr.xacl](ciscoxr.xacl) | 3 | yes | no, expanded |
+| ciscoasa.pol | Cisco ASA | [ciscoasa.asa](ciscoasa.asa) | 10x10x2 + 5x5x1 = 225 | no | no |
+| juniper.pol | Juniper | [juniper.jcl](juniper.jcl) | 2 | yes | yes |
+| juniperevo.pol | Juniper EVO | [juniperevo.evojcl](juniperevo.evojcl) | 2 | yes | yes |
+| msmpc.pol | Juniper MSMPC | [msmpc.msmpc](msmpc.msmpc) | 2 | yes | yes |
+| srx.pol | Juniper SRX | [srx.srx](srx.srx) | 2 | yes | yes |
 
 
 ## Kubernetes policy restrictions
