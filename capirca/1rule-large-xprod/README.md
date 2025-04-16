@@ -17,3 +17,5 @@ implementations.
 To create the two IPv4 prefix groups, run this command:
 
 ```bash
+./gen-network-file.py > def/NETWORK.net
+```
